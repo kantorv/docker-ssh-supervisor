@@ -1,0 +1,7 @@
+Base ssh/supervisor cont.
+
+IMPORTANT!
+Remeber to replace key pair by your own:
+
+openssl genrsa -out sshkey.pem 1024
+openssl rsa -in sshkey.pem -pubout > sshkey.pub
