@@ -1,0 +1,13 @@
+SERVER_IP=$(sudo docker inspect sshsupervisor_cont | grep IPAddress | cut -d '"' -f4)
+APP_ROOT=$(pwd)
+
+
+RET=1
+until [ ${RET} -eq 0 ]; do
+    ssh -t -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no   -o IdentitiesOnly=yes -i $APP_ROOT/sshkey.pem root@$SERVER_IP 'supervisorctl status;ps faux;netstat -NFvtpa | grep -v tcp6'
+    RET=$?
+    sleep 1
+done
+
+
+

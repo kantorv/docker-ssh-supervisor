@@ -3,5 +3,7 @@ Base ssh/supervisor cont.
 IMPORTANT!
 Remeber to replace key pair by your own:
 
-openssl genrsa -out sshkey.pem 1024
-openssl rsa -in sshkey.pem -pubout > sshkey.pub
+$ rm sshkey.pem sshkey.pub
+$ ssh-keygen -t rsa -b 2048 -f sshkey.pem
+$ chmod 400  sshkey.pem
+$ mv sshkey.pem.pub sshkey.pub

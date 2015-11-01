@@ -1,16 +1,6 @@
-#############################################################
-################### OFFICIAL UBUNTU REPOS ###################
-#############################################################
+deb http://10.0.0.22/ubuntu/ trusty main restricted universe multiverse
+deb http://10.0.0.22/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://10.0.0.22/ubuntu/ trusty-security main restricted universe multiverse
+deb http://10.0.0.22/ubuntu/ trusty-backports main restricted universe multiverse
 
-###### Ubuntu Main Repos
-deb http://il.archive.ubuntu.com/ubuntu/ trusty main universe 
-deb-src http://il.archive.ubuntu.com/ubuntu/ trusty main universe 
-
-###### Ubuntu Update Repos
-deb http://il.archive.ubuntu.com/ubuntu/ trusty-security main universe 
-deb http://il.archive.ubuntu.com/ubuntu/ trusty-updates main universe 
-deb http://il.archive.ubuntu.com/ubuntu/ trusty-backports main universe 
-deb-src http://il.archive.ubuntu.com/ubuntu/ trusty-security main universe 
-deb-src http://il.archive.ubuntu.com/ubuntu/ trusty-updates main universe 
-deb-src http://il.archive.ubuntu.com/ubuntu/ trusty-backports main universe 
 

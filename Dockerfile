@@ -43,5 +43,4 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 EXPOSE  22
-#VOLUME ["/home/lalala/docker-manager/mesanenet-server/volumes/supervisor"]
 CMD env | grep _ >> /etc/environment && /usr/bin/supervisord

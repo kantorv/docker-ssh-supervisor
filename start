@@ -1,0 +1,28 @@
+#!/bin/bash
+sudo docker rm -f sshsupervisor_cont
+APP_ROOT=$(pwd)
+
+
+CID=`sudo docker run -t -d \
+  -v $APP_ROOT/logs:/var/log/supervisor \
+  -v $APP_ROOT/shared:/shared \
+  -p 8085:8085 \
+  --hostname="sshsupervisor.local" \
+  --name sshsupervisor_cont lalala/sshsupervisor:latest`
+
+
+echo "container id: $CID"
+
+CONT_IP=$(sudo docker inspect sshsupervisor_cont | grep IPAddress | cut -d '"' -f 4)
+echo "container ip: $CONT_IP"
+
+
+RET=1
+until [ ${RET} -eq 0 ]; do
+    ssh -t -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no   -o IdentitiesOnly=yes -i $APP_ROOT/sshkey.pem root@$CONT_IP 'supervisorctl status'
+    RET=$?
+    sleep 1
+done
+echo "container connected"
+
+
